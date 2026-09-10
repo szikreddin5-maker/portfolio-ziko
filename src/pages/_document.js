@@ -29,9 +29,11 @@ export default class MyDocument extends Document {
   }
   render() {
     return (
-      <Html lang='en-GB'>
+      <Html lang="tr">
         <Head>
-          <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+          <title>Zikreddin Şık | Portfolyo</title>
+          <meta name="description" content="Karabük Üniversitesi Bilgisayar Mühendisliği öğrencisi. Unity, C#, Next.js ve yapay zeka projeleri." />
+          <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
         </Head>
         <body>
           <Main />

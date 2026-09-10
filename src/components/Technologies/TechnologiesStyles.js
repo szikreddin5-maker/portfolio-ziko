@@ -5,6 +5,7 @@ export const HobbyGrid = styled.div`
   grid-template-columns: repeat(2, 1fr);
   gap: 32px;
   margin: 3rem 0;
+  padding: 4px 2px 12px;
 
   @media ${props => props.theme.breakpoints.lg} {
     grid-template-columns: repeat(2, 1fr);
@@ -22,66 +23,80 @@ export const HobbyGrid = styled.div`
   }
 `;
 
-export const HobbyCard = styled.div`
-  background: linear-gradient(135deg, rgba(79, 108, 176, 0.15) 0%, rgba(79, 108, 176, 0.05) 100%);
-  border: 1px solid rgba(79, 108, 176, 0.3);
-  border-radius: 12px;
-  padding: 28px;
+export const HobbyCard = styled.article`
+  position: relative;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  text-align: center;
-  transition: all 0.3s ease;
+  overflow: hidden;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid #1e293b;
+  border-radius: 16px;
+  transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
 
   &:hover {
-    border-color: rgba(79, 108, 176, 0.6);
-    background: linear-gradient(135deg, rgba(79, 108, 176, 0.25) 0%, rgba(79, 108, 176, 0.1) 100%);
-  }
-
-  @media ${props => props.theme.breakpoints.md} {
-    padding: 24px;
-  }
-
-  @media ${props => props.theme.breakpoints.sm} {
-    padding: 20px;
+    transform: translateY(-4px);
+    border-color: rgba(6, 182, 212, 0.3);
+    box-shadow: 0 0 20px rgba(6, 182, 212, 0.1);
   }
 `;
 
+export const HobbyMedia = styled.div`
+  position: relative;
+  width: 100%;
+  height: 240px;
+  overflow: hidden;
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(34, 211, 238, 0.1) 0%, transparent 64%),
+    #0f172a;
+`;
+
 export const HobbyImage = styled.img`
-  width: 80px;
-  height: 80px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin-bottom: 16px;
+  display: block;
+  width: 100%;
+  height: 100%;
+  padding: 18px 28px 40px;
+  box-sizing: border-box;
+  object-fit: contain;
+  object-position: center 20%;
+  opacity: 0.86;
   mix-blend-mode: multiply;
-  opacity: 0.8;
-  transition: opacity 0.3s ease;
-  filter: contrast(1.1);
+  filter: contrast(1.14) saturate(1.1) drop-shadow(0 10px 24px rgba(6, 182, 212, 0.12));
+  transform: scale(1.12);
+  transform-origin: center 30%;
+  transition: opacity 0.3s ease, transform 0.35s ease;
 
   ${HobbyCard}:hover & {
     opacity: 1;
+    transform: scale(1.2);
   }
+`;
 
-  @media ${props => props.theme.breakpoints.md} {
-    width: 70px;
-    height: 70px;
-    margin-bottom: 12px;
-  }
+export const HobbyMask = styled.div`
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(to top, #0f172a 0%, rgba(15, 23, 42, 0.6) 42%, transparent 100%);
+`;
 
-  @media ${props => props.theme.breakpoints.sm} {
-    width: 60px;
-    height: 60px;
-    margin-bottom: 10px;
-  }
+export const HobbyBody = styled.div`
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-top: -52px;
+  padding: 0 24px 28px;
 `;
 
 export const HobbyTitle = styled.h3`
   font-weight: 700;
   font-size: 20px;
   line-height: 28px;
-  letter-spacing: 0.02em;
-  color: #FFFFFF;
+  color: #e2e8f0;
   margin-bottom: 12px;
+  transition: color 0.3s ease;
+
+  ${HobbyCard}:hover & {
+    color: #22d3ee;
+  }
 
   @media ${props => props.theme.breakpoints.md} {
     font-size: 18px;
@@ -99,8 +114,7 @@ export const HobbyTitle = styled.h3`
 export const HobbyDescription = styled.p`
   font-size: 14px;
   line-height: 22px;
-  letter-spacing: 0.02em;
-  color: rgba(255, 255, 255, 0.8);
+  color: #94a3b8;
 
   @media ${props => props.theme.breakpoints.md} {
     font-size: 13px;

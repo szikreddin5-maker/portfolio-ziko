@@ -1,48 +1,82 @@
-import Link from 'next/link';
-import React from 'react';
-import { AiFillGithub, AiFillInstagram, AiFillLinkedin } from 'react-icons/ai';
-import { DiCssdeck } from 'react-icons/di';
+import React, { useState } from 'react';
+import { AiFillGithub, AiFillInstagram, AiFillLinkedin, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
-import { Container, Div1, Div2, Div3, NavLink, SocialIcons } from './HeaderStyles';
+import {
+  HeaderBar,
+  Container,
+  Logo,
+  LogoCrest,
+  LogoImg,
+  LogoName,
+  DesktopNav,
+  NavLink,
+  RightGroup,
+  SocialIcons,
+  CvButton,
+  MenuButton,
+  MobileMenu,
+  MobileLink,
+} from './HeaderStyles';
 
-const Header = () =>  (
-  <Container>
-    <Div1>
-      <Link href="/">
-        <a style={{ display: 'flex', alignItems: 'center', color:"white" }}>
-          <DiCssdeck size="3rem" /> <span>Portfolio</span>
-        </a>
-      </Link>
-    </Div1>
-    <Div2>
-      <li>
-        <Link href="#projects">
-          <NavLink>Projeler</NavLink>
-        </Link>
-      </li>
-      <li>
-        <Link href="#tech">
-          <NavLink>Hobiler</NavLink>
-        </Link>
-      </li>        
-      <li>
-        <Link href="#about">
-          <NavLink>Hakkında</NavLink>
-        </Link>
-      </li>        
-    </Div2>
-      <Div3>
-        <SocialIcons href="https://github.com/szikreddin5-maker">
-          <AiFillGithub size="3rem" />
-        </SocialIcons>
-        <SocialIcons href="https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/">
-          <AiFillLinkedin size="3rem" />
-        </SocialIcons>
-        <SocialIcons href="https://www.instagram.com/zikreddin00/">
-          <AiFillInstagram size="3rem"/>
-        </SocialIcons>
-      </Div3>
-    </Container>
-);
+const navItems = [
+  { href: '#projects', label: 'Projeler' },
+  { href: '#skills', label: 'Yetenekler' },
+  { href: '#hobbies', label: 'Hobiler' },
+  { href: '#about', label: 'Hakkımda' },
+  { href: '#contact', label: 'İletişim' },
+];
+
+const Header = () => {
+  const [open, setOpen] = useState(false);
+
+  const closeMenu = () => setOpen(false);
+
+  return (
+    <HeaderBar>
+      <Container>
+        <Logo href="#" onClick={closeMenu} aria-label="Zikreddin Şık">
+          <LogoCrest>
+            <LogoImg src="/logo-mark.png?v=3" alt="" />
+          </LogoCrest>
+          <LogoName>Zikreddin Şık</LogoName>
+        </Logo>
+
+        <DesktopNav>
+          {navItems.map((item) => (
+            <NavLink key={item.href} href={item.href}>
+              {item.label}
+            </NavLink>
+          ))}
+        </DesktopNav>
+
+        <RightGroup>
+          <SocialIcons href="https://github.com/szikreddin5-maker" target="_blank" rel="noreferrer" aria-label="GitHub">
+            <AiFillGithub size="2.6rem" />
+          </SocialIcons>
+          <SocialIcons href="https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/" target="_blank" rel="noreferrer" aria-label="LinkedIn">
+            <AiFillLinkedin size="2.6rem" />
+          </SocialIcons>
+          <SocialIcons href="https://www.instagram.com/zikreddin00/" target="_blank" rel="noreferrer" aria-label="Instagram">
+            <AiFillInstagram size="2.6rem" />
+          </SocialIcons>
+          <CvButton href="/cv.pdf" target="_blank" rel="noopener noreferrer">
+            CV İndir
+          </CvButton>
+          <MenuButton type="button" onClick={() => setOpen((prev) => !prev)} aria-label="Menü">
+            {open ? <AiOutlineClose size="2rem" /> : <AiOutlineMenu size="2rem" />}
+          </MenuButton>
+        </RightGroup>
+      </Container>
+
+      <MobileMenu open={open}>
+        {navItems.map((item) => (
+          <MobileLink key={item.href} href={item.href} onClick={closeMenu}>
+            {item.label}
+          </MobileLink>
+        ))}
+      </MobileMenu>
+    </HeaderBar>
+  );
+};
 
 export default Header;

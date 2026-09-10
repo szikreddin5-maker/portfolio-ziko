@@ -12,7 +12,9 @@ const GlobalStyles = createGlobalStyle`
   html {
     font-size: 62.5%;
     scroll-behavior: smooth;
-
+  }
+  [id] {
+    scroll-margin-top: 88px;
   }
   body {
     font-family: ${props => props.theme.fonts.main};

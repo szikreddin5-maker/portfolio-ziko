@@ -1,39 +1,71 @@
 import React from 'react';
 
-import { BlogCard, CardInfo, ExternalLinks, GridContainer, HeaderThree, Hr, Intro, Tag, TagList, TitleContent, UtilityList, Img } from './ProjectsStyles';
+import {
+  BlogCard,
+  CardInfo,
+  ExternalLinks,
+  GridContainer,
+  HeaderThree,
+  Hr,
+  Intro,
+  Tag,
+  TagList,
+  TitleContent,
+  UtilityList,
+  Img,
+  ImageFrame,
+  ImageMask,
+  StatusBadge,
+} from './ProjectsStyles';
 import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalComponents';
 import { projects } from '../../constants/constants';
 
 const Projects = () => (
   <Section nopadding id="projects">
     <SectionDivider />
-    <SectionTitle main>Projects</SectionTitle>
+    <SectionTitle main>Projeler</SectionTitle>
     <GridContainer>
-      {projects.map((p, i) => {
-        return (
-          <BlogCard key={i}>
-          <Img src={p.image} />
-            <TitleContent>
-              <HeaderThree title>{p.title}</HeaderThree>
-              <Intro>{p.intro}</Intro>
-              <Hr />
-            </TitleContent>
-            <CardInfo className="card-info">{p.description}</CardInfo>
-            <div>
-              <TitleContent>Stack</TitleContent>
-              <TagList>
-                {p.tags.map((t, i) => {
-                  return <Tag key={i}>{t}</Tag>;
-                })}
-              </TagList>
-            </div>
-            <UtilityList>
-              <ExternalLinks href={p.visit}>Kaynaklar</ExternalLinks>
-              <ExternalLinks href={p.source}>İncele</ExternalLinks>
-            </UtilityList>
-          </BlogCard>
-        );
-      })}
+      {projects.map((p) => (
+        <BlogCard key={p.id}>
+          <ImageFrame>
+            <Img src={p.image} alt={p.title} $position={p.imagePosition} />
+            <ImageMask />
+          </ImageFrame>
+          <TitleContent>
+            <HeaderThree title>{p.title}</HeaderThree>
+            <Intro>{p.intro}</Intro>
+            <Hr />
+          </TitleContent>
+          <CardInfo>{p.description}</CardInfo>
+          <div>
+            <TitleContent>Yığın</TitleContent>
+            <TagList>
+              {p.tags.map((t) => (
+                <Tag key={t}>{t}</Tag>
+              ))}
+            </TagList>
+          </div>
+          <UtilityList>
+            {p.actions.map((action) => {
+              if (action.type === 'badge') {
+                return <StatusBadge key={action.label}>{action.label}</StatusBadge>;
+              }
+
+              return (
+                <ExternalLinks
+                  key={action.label}
+                  href={action.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  primary={action.type === 'primary'}
+                >
+                  {action.label}
+                </ExternalLinks>
+              );
+            })}
+          </UtilityList>
+        </BlogCard>
+      ))}
     </GridContainer>
   </Section>
 );

@@ -4,10 +4,10 @@ import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalCompon
 import { Box, Boxes, BoxNum, BoxText } from './AcomplishmentsStyles';
 
 const data = [
-  { number: '500+', text: 'Yapay Zeka Kulübüm üye sayısı'},
+  { number: '600+', text: 'Yapay Zeka Kulübüm üye sayısı'},
   { number: '1.', text: 'Münazara Bölge Şampiyonu' },
   { number: '3.', text: 'İl Satranç Turnuvası Derecesi 2026' },
-  { number: '117K', text: 'YKS Analitik Başarı Sıralaması' },
+  { number: '117.263', text: 'YKS 2024 Analitik Başarı Sıralaması' },
 ];
 
 const Acomplishments = () => (

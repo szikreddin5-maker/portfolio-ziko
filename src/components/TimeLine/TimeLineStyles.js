@@ -1,6 +1,49 @@
 
 import styled from 'styled-components'
 
+export const VisionGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin: 3.2rem 0 4.8rem;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+`;
+
+export const VisionCard = styled.article`
+  padding: 28px 24px;
+  border-radius: 16px;
+  border: 1px solid rgba(34, 211, 238, 0.18);
+  background: linear-gradient(165deg, rgba(34, 211, 238, 0.08), rgba(15, 22, 36, 0.35));
+  transition: border-color 0.3s ease, transform 0.3s ease;
+
+  &:hover {
+    border-color: rgba(34, 211, 238, 0.45);
+    transform: translateY(-4px);
+  }
+`;
+
+export const VisionIcon = styled.div`
+  color: #67e8f9;
+  margin-bottom: 14px;
+`;
+
+export const VisionTitle = styled.h3`
+  color: #fff;
+  font-size: 2rem;
+  margin-bottom: 12px;
+`;
+
+export const VisionText = styled.p`
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 1.55rem;
+  line-height: 2.6rem;
+`;
+
+
 export const CarouselContainer = styled.ul`
   max-width: 1040px;
   background: #0F1624;

@@ -6,14 +6,14 @@ import { CompanyContainer, FooterWrapper, LinkColumn, LinkItem, LinkList, LinkTi
 
 const Footer = () => {
   return (
-    <FooterWrapper>
+    <FooterWrapper id="contact">
       <LinkList>
         <LinkColumn>
-          <LinkTitle>Call</LinkTitle>
+          <LinkTitle>Telefon</LinkTitle>
           <LinkItem href="tel:05052367825">0 505 236 7825</LinkItem>
         </LinkColumn>
         <LinkColumn>
-          <LinkTitle>Email</LinkTitle>
+          <LinkTitle>E-posta</LinkTitle>
           <LinkItem href="mailto:szikreddin5@gmail.com">
             szikreddin5@gmail.com
           </LinkItem>
@@ -21,16 +21,16 @@ const Footer = () => {
       </LinkList>
       <SocialIconsContainer>
         <CompanyContainer>
-          <Slogan>Innovating one project at a time</Slogan>
+          <Slogan>Bir proje, bir sistem, bir adım ileri.</Slogan>
         </CompanyContainer>
         <SocialContainer>
-          <SocialIcons href="https://github.com/enespolat25">
+          <SocialIcons href="https://github.com/szikreddin5-maker" target="_blank" rel="noreferrer">
             <AiFillGithub size="3rem" />
           </SocialIcons>
-          <SocialIcons href="https://www.linkedin.com/in/enes-polat-09671743/">
+          <SocialIcons href="https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/" target="_blank" rel="noreferrer">
             <AiFillLinkedin size="3rem" />
           </SocialIcons>
-          <SocialIcons href="https://www.instagram.com/plt_ns/">
+          <SocialIcons href="https://www.instagram.com/zikreddin00/" target="_blank" rel="noreferrer">
             <AiFillInstagram size="3rem" />
           </SocialIcons>
         </SocialContainer>
