@@ -21,9 +21,15 @@ import {
   TypeBadge,
   PhotoHint,
   Overlay,
-  QuoteBox,
-  QuoteText,
-  QuoteSign,
+  ModalCard,
+  ModalBanner,
+  ModalClose,
+  ModalBody,
+  ModalKicker,
+  ModalTitle,
+  TraitRow,
+  Trait,
+  ModalText,
   Terminal,
   TerminalBar,
   Dot,
@@ -156,13 +162,13 @@ const TypewriterCode = () => {
 };
 
 const Hero = () => {
-  const [showQuote, setShowQuote] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
 
   useEffect(() => {
-    if (!showQuote) return undefined;
+    if (!profileOpen) return undefined;
 
     const onKey = (event) => {
-      if (event.key === 'Escape') setShowQuote(false);
+      if (event.key === 'Escape') setProfileOpen(false);
     };
 
     document.addEventListener('keydown', onKey);
@@ -173,7 +179,7 @@ const Hero = () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = previousOverflow;
     };
-  }, [showQuote]);
+  }, [profileOpen]);
 
   return (
   <HeroWrap>
@@ -199,7 +205,7 @@ const Hero = () => {
       </LeftSection>
 
       <RightSection>
-        <PhotoCard type="button" onClick={() => setShowQuote(true)} aria-haspopup="dialog" aria-expanded={showQuote}>
+        <PhotoCard type="button" onClick={() => setProfileOpen(true)} aria-haspopup="dialog" aria-expanded={profileOpen}>
           <ImageWrapper>
             <ProfileImg src="/profile.webp" alt="Zikreddin Şık" />
             <PhotoOverlay>
@@ -221,14 +227,40 @@ const Hero = () => {
       </RightSection>
     </HeroGrid>
 
-    {showQuote && (
-      <Overlay onClick={() => setShowQuote(false)} role="presentation">
-        <QuoteBox role="dialog" aria-modal="true" aria-labelledby="quote-text">
-          <QuoteText id="quote-text">
-            “Herkesin aynı rüyayı görme olasılığının olasılığı; yaşanıyor.”
-          </QuoteText>
-          <QuoteSign>— Zikreddin Şık</QuoteSign>
-        </QuoteBox>
+    {profileOpen && (
+      <Overlay onClick={() => setProfileOpen(false)} role="presentation">
+        <ModalCard
+          role="dialog"
+          aria-modal="true"
+          aria-labelledby="profile-title"
+          onClick={(event) => event.stopPropagation()}
+        >
+          <ModalClose type="button" onClick={() => setProfileOpen(false)} aria-label="Kapat">
+            ×
+          </ModalClose>
+          <ModalBanner>
+            <img src="/images/entj.webp" alt="" />
+          </ModalBanner>
+          <ModalBody>
+            <ModalKicker>16 PERSONALITIES</ModalKicker>
+            <ModalTitle id="profile-title">ENTJ-A · Komutan</ModalTitle>
+            <TraitRow>
+              <Trait>Vizyon</Trait>
+              <Trait>Karar</Trait>
+              <Trait>Sistem</Trait>
+              <Trait>Liderlik</Trait>
+            </TraitRow>
+            <ModalText>
+              Assertive Commander: hedefi net koyan, sistemi kuran, insanları aynı yöne çeken bir duruş.
+              “A” tarafı baskı altında da ritmi bozmamak; kendi çıtasını kendi koymak.
+            </ModalText>
+            <ModalText>
+              Bu profil bende etiket olarak durmuyor. 600+ kişilik bir yapay zeka kulübünü yönetmek,
+              satrançta birkaç hamle sonrasını hesaplamak, münazarada argümanı keskinleştirmek ve
+              kendi emeğimle yola çıkmak aynı omurgadan geliyor: soğukkanlı plan, hızlı icra.
+            </ModalText>
+          </ModalBody>
+        </ModalCard>
       </Overlay>
     )}
   </HeroWrap>

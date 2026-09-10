@@ -296,7 +296,6 @@ export const Overlay = styled.div`
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
-  cursor: pointer;
 `;
 
 const quoteIn = keyframes`

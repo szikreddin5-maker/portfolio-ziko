@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 
 export const HeaderBar = styled.header`
   position: sticky;
@@ -27,20 +27,23 @@ export const Container = styled.div`
   }
 `;
 
-export const Logo = styled.a`
+export const Logo = styled.div`
   display: flex;
   align-items: center;
   gap: 1.2rem;
   flex-shrink: 0;
 `;
 
-export const LogoCrest = styled.span`
+export const LogoCrest = styled.button`
   position: relative;
   width: 56px;
   height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
+  padding: 0;
+  appearance: none;
+  cursor: pointer;
   border-radius: 50%;
   background: radial-gradient(circle at 32% 28%, #1e293b 0%, #0f172a 72%);
   border: 1px solid rgba(34, 211, 238, 0.38);
@@ -59,13 +62,15 @@ export const LogoCrest = styled.span`
     pointer-events: none;
   }
 
-  ${Logo}:hover & {
+  &:hover,
+  &:focus-visible {
     transform: translateY(-1px);
     border-color: rgba(34, 211, 238, 0.7);
     box-shadow:
       0 0 0 3px rgba(15, 22, 36, 0.95),
       0 0 0 4px rgba(34, 211, 238, 0.4),
       0 0 20px rgba(34, 211, 238, 0.28);
+    outline: none;
   }
 `;
 
@@ -79,7 +84,7 @@ export const LogoImg = styled.img`
   image-rendering: auto;
 `;
 
-export const LogoName = styled.span`
+export const LogoName = styled.a`
   font-size: 1.7rem;
   font-weight: 600;
   letter-spacing: 0.01em;
@@ -87,7 +92,7 @@ export const LogoName = styled.span`
   white-space: nowrap;
   transition: color 0.3s ease;
 
-  ${Logo}:hover & {
+  &:hover {
     color: #67e8f9;
   }
 
@@ -210,4 +215,60 @@ export const MobileLink = styled.a`
   &:hover {
     color: #67e8f9;
   }
+`;
+
+export const QuoteOverlay = styled.div`
+  position: fixed;
+  inset: 0;
+  z-index: 220;
+  background: rgba(2, 6, 23, 0.8);
+  backdrop-filter: blur(12px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  cursor: pointer;
+`;
+
+const quoteIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(16px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`;
+
+export const QuoteBox = styled.div`
+  width: min(512px, 100%);
+  padding: 40px 40px 32px;
+  text-align: center;
+  background: rgba(15, 23, 42, 0.5);
+  border: 1px solid rgba(6, 182, 212, 0.3);
+  border-radius: 16px;
+  box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
+  backdrop-filter: blur(18px);
+  animation: ${quoteIn} 0.45s ease;
+`;
+
+export const QuoteText = styled.p`
+  margin: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: 2.4rem;
+  line-height: 1.65;
+  color: #e2e8f0;
+`;
+
+export const QuoteSign = styled.cite`
+  display: block;
+  margin-top: 24px;
+  text-align: right;
+  font-family: 'JetBrains Mono', monospace;
+  font-style: normal;
+  font-size: 1.3rem;
+  color: rgba(34, 211, 238, 0.8);
 `;

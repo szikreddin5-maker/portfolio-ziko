@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { AiFillGithub, AiFillInstagram, AiFillLinkedin, AiOutlineClose, AiOutlineMenu } from 'react-icons/ai';
 
 import {
@@ -16,6 +16,10 @@ import {
   MenuButton,
   MobileMenu,
   MobileLink,
+  QuoteOverlay,
+  QuoteBox,
+  QuoteText,
+  QuoteSign,
 } from './HeaderStyles';
 
 const navItems = [
@@ -28,17 +32,46 @@ const navItems = [
 
 const Header = () => {
   const [open, setOpen] = useState(false);
+  const [showQuote, setShowQuote] = useState(false);
 
   const closeMenu = () => setOpen(false);
+
+  useEffect(() => {
+    if (!showQuote) return undefined;
+
+    const onKey = (event) => {
+      if (event.key === 'Escape') setShowQuote(false);
+    };
+
+    document.addEventListener('keydown', onKey);
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+
+    return () => {
+      document.removeEventListener('keydown', onKey);
+      document.body.style.overflow = previousOverflow;
+    };
+  }, [showQuote]);
 
   return (
     <HeaderBar>
       <Container>
-        <Logo href="#" onClick={closeMenu} aria-label="Zikreddin Şık">
-          <LogoCrest>
+        <Logo>
+          <LogoCrest
+            type="button"
+            onClick={() => {
+              closeMenu();
+              setShowQuote(true);
+            }}
+            aria-haspopup="dialog"
+            aria-expanded={showQuote}
+            aria-label="Kurucunun sözünü aç"
+          >
             <LogoImg src="/logo-mark.png?v=3" alt="" />
           </LogoCrest>
-          <LogoName>Zikreddin Şık</LogoName>
+          <LogoName href="#" onClick={closeMenu}>
+            Zikreddin Şık
+          </LogoName>
         </Logo>
 
         <DesktopNav>
@@ -75,6 +108,17 @@ const Header = () => {
           </MobileLink>
         ))}
       </MobileMenu>
+
+      {showQuote && (
+        <QuoteOverlay onClick={() => setShowQuote(false)} role="presentation">
+          <QuoteBox role="dialog" aria-modal="true" aria-labelledby="quote-text">
+            <QuoteText id="quote-text">
+              “Herkesin aynı rüyayı görme olasılığının olasılığı; yaşanıyor.”
+            </QuoteText>
+            <QuoteSign>— Zikreddin Şık</QuoteSign>
+          </QuoteBox>
+        </QuoteOverlay>
+      )}
     </HeaderBar>
   );
 };
