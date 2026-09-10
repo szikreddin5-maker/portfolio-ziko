@@ -115,6 +115,7 @@ export const NameLine = styled.p`
 `;
 
 export const NameAccent = styled.span`
+  white-space: nowrap;
   background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
