@@ -7,7 +7,7 @@ const data = [
   { number: '600+', text: 'Yapay Zeka Kulübüm üye sayısı'},
   { number: '1.', text: 'Münazara Bölge Şampiyonu' },
   { number: '3.', text: 'İl Satranç Turnuvası Derecesi 2026' },
-  { number: '117.263', text: 'YKS 2024 Analitik Başarı Sıralaması' },
+  { number: '117.263', text: 'YKS 2024 Sayısal Analitik Başarı Sıralaması' },
 ];
 
 const Acomplishments = () => (

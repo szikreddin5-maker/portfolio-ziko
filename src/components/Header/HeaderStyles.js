@@ -217,23 +217,57 @@ export const MobileLink = styled.a`
   }
 `;
 
+const overlayIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
 export const QuoteOverlay = styled.div`
   position: fixed;
   inset: 0;
   z-index: 220;
-  background: rgba(2, 6, 23, 0.8);
-  backdrop-filter: blur(12px);
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 24px 16px;
+  background: rgba(2, 6, 23, 0.82);
+  backdrop-filter: blur(14px);
   cursor: pointer;
+  animation: ${overlayIn} 0.35s ease;
 `;
 
 const quoteIn = keyframes`
   from {
     opacity: 0;
-    transform: translateY(16px);
+    transform: translateY(18px) scale(0.985);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+`;
+
+const portraitReveal = keyframes`
+  from {
+    opacity: 0;
+    transform: scale(1.08);
+    filter: blur(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+    filter: blur(0);
+  }
+`;
+
+const quoteCopyIn = keyframes`
+  from {
+    opacity: 0;
+    transform: translateY(12px);
   }
   to {
     opacity: 1;
@@ -242,15 +276,110 @@ const quoteIn = keyframes`
 `;
 
 export const QuoteBox = styled.div`
-  width: min(512px, 100%);
-  padding: 40px 40px 32px;
-  text-align: center;
-  background: rgba(15, 23, 42, 0.5);
-  border: 1px solid rgba(6, 182, 212, 0.3);
-  border-radius: 16px;
-  box-shadow: 0 0 40px rgba(6, 182, 212, 0.15);
-  backdrop-filter: blur(18px);
-  animation: ${quoteIn} 0.45s ease;
+  position: relative;
+  width: min(820px, 100%);
+  display: grid;
+  grid-template-columns: minmax(250px, 46%) 1fr;
+  overflow: hidden;
+  cursor: default;
+  background: rgba(8, 15, 28, 0.94);
+  border: 1px solid rgba(6, 182, 212, 0.28);
+  border-radius: 20px;
+  box-shadow:
+    0 28px 80px rgba(2, 6, 23, 0.55),
+    0 0 48px rgba(6, 182, 212, 0.12);
+  animation: ${quoteIn} 0.5s ease;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    grid-template-columns: 1fr;
+  }
+`;
+
+export const QuotePortraitWrap = styled.div`
+  position: relative;
+  min-height: 380px;
+  overflow: hidden;
+  background: #0b1220;
+
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+    background: linear-gradient(
+      90deg,
+      rgba(8, 15, 28, 0) 18%,
+      rgba(8, 15, 28, 0.18) 48%,
+      rgba(8, 15, 28, 0.72) 78%,
+      rgba(8, 15, 28, 0.98) 100%
+    );
+  }
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    min-height: 240px;
+    max-height: 280px;
+
+    &::after {
+      background: linear-gradient(
+        180deg,
+        rgba(8, 15, 28, 0) 28%,
+        rgba(8, 15, 28, 0.4) 68%,
+        rgba(8, 15, 28, 0.98) 100%
+      );
+    }
+  }
+`;
+
+export const QuotePortrait = styled.img`
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 62% 10%;
+  animation: ${portraitReveal} 1.2s ease forwards;
+`;
+
+export const QuoteContent = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  z-index: 2;
+  margin-left: -36px;
+  padding: 40px 40px 36px 20px;
+  animation: ${quoteCopyIn} 0.7s ease 0.32s both;
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    margin-left: 0;
+    padding: 8px 24px 28px;
+    text-align: center;
+  }
+`;
+
+export const QuoteClose = styled.button`
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  z-index: 3;
+  width: 36px;
+  height: 36px;
+  border: 1px solid rgba(148, 163, 184, 0.25);
+  border-radius: 50%;
+  background: rgba(15, 23, 42, 0.72);
+  color: #e2e8f0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+
+  &:hover,
+  &:focus-visible {
+    border-color: #22d3ee;
+    color: #67e8f9;
+    outline: none;
+  }
 `;
 
 export const QuoteText = styled.p`
@@ -261,6 +390,10 @@ export const QuoteText = styled.p`
   font-size: 2.4rem;
   line-height: 1.65;
   color: #e2e8f0;
+
+  @media ${(props) => props.theme.breakpoints.sm} {
+    font-size: 2rem;
+  }
 `;
 
 export const QuoteSign = styled.cite`
@@ -271,4 +404,8 @@ export const QuoteSign = styled.cite`
   font-style: normal;
   font-size: 1.3rem;
   color: rgba(34, 211, 238, 0.8);
+
+  @media ${(props) => props.theme.breakpoints.md} {
+    text-align: center;
+  }
 `;
