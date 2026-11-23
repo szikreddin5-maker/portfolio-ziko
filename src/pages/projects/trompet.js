@@ -23,6 +23,7 @@ const project = {
     'Keeping a clean separation between visual presentation and the gameplay implementation owned by other team members.',
     'Iterating in the editor and documenting scene setup to make teamwork easier.',
   ],
+  lab: 'A portfolio-only SVG diagram derives player positions from uniform angular spacing and computes three card zones along each player’s tangent. This illustrates a presentation layout, not implemented gameplay logic. The 4 × 3 topology is validated with automated geometry tests.',
   next: 'Complete and validate the visual card areas for each player, integrate the scene with gameplay systems, and replace the current project artwork with real Unity screenshots and footage. Features that are still under development are not presented as finished.',
 };
 
