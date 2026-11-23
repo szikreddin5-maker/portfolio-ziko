@@ -12,13 +12,14 @@ test('the static export provides homepage and project case studies', () => {
   const disiplin = html('projects/disiplin.html');
   const notFound = html('404.html');
 
-  assert.match(index, /Building interactive experiences/);
+  assert.match(index, /<h1[^>]*><span[^>]*>Zikreddin Şık<\/span><\/h1>/);
   assert.match(index, /Twelve zones/);
   assert.match(index, /Player 4/);
   assert.match(index, /Selected Work/);
   assert.match(trompet, /My contributions/);
   assert.match(trompet, /Three|three/);
   assert.match(disiplin, /Closed testing/);
+  assert.match(disiplin, /A focus session/);
   assert.match(notFound, /404/);
 });
 

@@ -9,14 +9,14 @@ const Hero = () => (
   <HeroWrap id="top" aria-labelledby="hero-title">
     <HeroGrid>
       <LeftSection>
-        <Badge>UNITY / C# · GAME DEVELOPMENT</Badge>
+        <Badge>COMPUTER ENGINEERING STUDENT</Badge>
         <Title id="hero-title">
-          Building interactive experiences, <NameAccent>one system at a time.</NameAccent>
+          <NameAccent>Zikreddin Şık</NameAccent>
         </Title>
         <Lead>
-          I'm Zikreddin, a Computer Engineering student focused on Unity game
-          development, thoughtful interactions, and collaborative projects.
-          I also build digital products and lead a university technology community.
+          I'm a second-year Computer Engineering student and president of the AI Club at Karabük University.
+          I work on TROMPET, a Unity card game, and DİSİPLİN, an Android focus app.
+          I'm looking for a software development internship.
         </Lead>
         <ButtonRow>
           <PrimaryButton href="#projects">Explore my work <span aria-hidden="true">↗</span></PrimaryButton>
@@ -24,7 +24,7 @@ const Hero = () => (
         </ButtonRow>
       </LeftSection>
       <RightSection>
-        <PreviewLink href="#projects" aria-label="Explore TROMPET, an in-development card game">
+        <PreviewLink href="/projects/trompet" aria-label="Explore TROMPET, an in-development card game">
           <PreviewImage src="/images/trompet.webp" alt="TROMPET strategic card game project artwork" />
           <PreviewContent>
             <PreviewEyebrow>FEATURED GAME PROJECT</PreviewEyebrow>

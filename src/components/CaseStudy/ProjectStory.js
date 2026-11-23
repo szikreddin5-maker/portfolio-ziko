@@ -144,6 +144,12 @@ const ProjectStory = ({ project }) => (
             <h2>Challenges & lessons</h2>
             <ul>{project.challenges.map(item => <li key={item}>{item}</li>)}</ul>
           </Section>
+          {project.example && (
+            <Section>
+              <h2>{project.example.title}</h2>
+              <p>{project.example.description}</p>
+            </Section>
+          )}
           {project.lab && (
             <Section>
               <h2>Technical design note</h2>
