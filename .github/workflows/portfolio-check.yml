@@ -1,0 +1,27 @@
+name: Portfolio verification
+
+on:
+  push:
+    branches:
+      - feature/portfolio-v2-privacy-first
+  pull_request:
+    paths:
+      - 'src/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - 'next.config.js'
+      - '.github/workflows/portfolio-check.yml'
+
+jobs:
+  static-build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+          cache: 'npm'
+      - name: Install locked dependencies
+        run: npm ci --legacy-peer-deps
+      - name: Verify static export
+        run: npm run build
