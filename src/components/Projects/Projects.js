@@ -28,7 +28,7 @@ const Projects = () => (
             {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
           </TagList>
           <UtilityList>
-            <StatusBadge>{project.stage}</StatusBadge>
+            <li><StatusBadge>{project.stage}</StatusBadge></li>
             {project.actions.map((action) => (
               <li key={action.label}>
                 <ExternalLinks
