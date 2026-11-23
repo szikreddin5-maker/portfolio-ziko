@@ -32,7 +32,7 @@ export default class MyDocument extends Document {
       <Html lang="tr">
         <Head>
           <title>Zikreddin Şık | Portfolyo</title>
-          <meta name="description" content="Zikreddin Şık’ın Unity oyunları, Android uygulamaları ve Karabük Üniversitesi Yapay Zeka Kulübü’ndeki çalışmaları." />
+          <meta name="description" content="Karabük Üniversitesi Bilgisayar Mühendisliği öğrencisi. Unity, C#, Next.js ve yapay zeka projeleri." />
           <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
         </Head>
         <body>

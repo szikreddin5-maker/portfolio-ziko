@@ -59,7 +59,7 @@ const CODE_TOKENS = [
   { t: 'key', v: 'role' },
   { t: 'punct', v: ':' },
   { t: 'plain', v: ' ' },
-  { t: 'str', v: '"Software Development"' },
+  { t: 'str', v: '"Computer Engineering Student"' },
   { t: 'punct', v: ',' },
   { t: 'plain', v: '\n  ' },
   { t: 'key', v: 'leadership' },
@@ -188,14 +188,15 @@ const Hero = () => {
     </BgLayer>
     <HeroGrid>
       <LeftSection>
-        <Badge>YAZILIM GELİŞTİRME · UNITY VE ANDROID</Badge>
+        <Badge>// KBÜ Yapay Zeka Kulübü Başkanı & Bilgisayar Mühendisliği Öğrencisi</Badge>
         <Title>
-          <NameAccent>Zikreddin Şık</NameAccent>
+          Fikirleri çalışan sistemlere, toplulukları ortak hedeflere dönüştürüyorum.{' '}
+          <NameAccent>Ben Zikreddin Şık.</NameAccent>
         </Title>
         <Lead>
-          Unity ile oyun, Android için mobil uygulama geliştiriyorum. TROMPET’te oyun kurallarını
-          test etmeye, DİSİPLİN’de Android test sürümünü hazırlamaya katkı veriyorum.
-          Karabük Üniversitesi Yapay Zeka Kulübü’ne başkanlık ediyorum.
+          Karabük Üniversitesi Yapay Zeka Kulübü Başkanı ve Bilgisayar Mühendisliği öğrencisiyim.
+          Yüzlerce kişilik bir teknoloji topluluğunu yönetirken; Unity ile derin strateji mekanikleri,
+          Android ve modern web mimarileriyle toplulukları harekete geçiren verimlilik ekosistemleri inşa ediyorum.
         </Lead>
         <ButtonRow>
           <PrimaryButton href="#projects">Projeleri Keşfet</PrimaryButton>
