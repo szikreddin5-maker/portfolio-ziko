@@ -44,7 +44,7 @@ const Header = () => {
           </MenuButton>
         </RightGroup>
       </Container>
-      <MobileMenu id="mobile-navigation" open={open} aria-label="Mobile navigation">
+      <MobileMenu id="mobile-navigation" $open={open} aria-label="Mobile navigation">
         {navItems.map((item) => (
           <MobileLink key={item.href} href={item.href} onClick={closeMenu}>{item.label}</MobileLink>
         ))}
