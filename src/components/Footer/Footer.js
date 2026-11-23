@@ -1,9 +1,8 @@
 import React from 'react';
 import { AiFillGithub, AiFillLinkedin } from 'react-icons/ai';
-import { SocialIcons } from '../Header/HeaderStyles';
 import {
   CompanyContainer, FooterWrapper, LinkColumn, LinkItem, LinkList,
-  LinkTitle, Slogan, SocialContainer, SocialIconsContainer,
+  LinkTitle, Slogan, SocialContainer, SocialIconsContainer, FooterSocialLink,
 } from './FooterStyles';
 
 const Footer = () => (
@@ -19,12 +18,12 @@ const Footer = () => (
         <Slogan>Building games, products, and communities.</Slogan>
       </CompanyContainer>
       <SocialContainer>
-        <SocialIcons href="https://github.com/szikreddin5-maker" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
+        <FooterSocialLink href="https://github.com/szikreddin5-maker" target="_blank" rel="noopener noreferrer" aria-label="GitHub">
           <AiFillGithub size="3rem" />
-        </SocialIcons>
-        <SocialIcons href="https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
+        </FooterSocialLink>
+        <FooterSocialLink href="https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn">
           <AiFillLinkedin size="3rem" />
-        </SocialIcons>
+        </FooterSocialLink>
       </SocialContainer>
     </SocialIconsContainer>
   </FooterWrapper>
