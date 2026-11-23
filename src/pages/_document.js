@@ -1,19 +1,16 @@
-import Document, { Head, Html, Main, NextScript } from 'next/document'
-import { ServerStyleSheet } from 'styled-components'
+import Document, { Head, Html, Main, NextScript } from 'next/document';
+import { ServerStyleSheet } from 'styled-components';
 
 export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
-    const sheet = new ServerStyleSheet()
-    const originalRenderPage = ctx.renderPage
-
+    const sheet = new ServerStyleSheet();
+    const originalRenderPage = ctx.renderPage;
     try {
       ctx.renderPage = () =>
         originalRenderPage({
-          enhanceApp: (App) => (props) =>
-            sheet.collectStyles(<App {...props} />),
-        })
-
-      const initialProps = await Document.getInitialProps(ctx)
+          enhanceApp: (App) => (props) => sheet.collectStyles(<App {...props} />),
+        });
+      const initialProps = await Document.getInitialProps(ctx);
       return {
         ...initialProps,
         styles: (
@@ -22,23 +19,23 @@ export default class MyDocument extends Document {
             {sheet.getStyleElement()}
           </>
         ),
-      }
+      };
     } finally {
-      sheet.seal()
+      sheet.seal();
     }
   }
+
   render() {
     return (
-      <Html lang="tr">
+      <Html lang="en">
         <Head>
-          <title>Zikreddin Şık | Portfolyo</title>
-          <meta name="description" content="Karabük Üniversitesi Bilgisayar Mühendisliği öğrencisi. Unity, C#, Next.js ve yapay zeka projeleri." />
-          <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400;1,600;1,700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+          <meta name="theme-color" content="#0F1624" />
+          <meta name="description" content="Zikreddin Şık is a computer engineering student focusing on Unity and C# game development, interactive experiences, and collaborative projects." />
+          <meta property="og:title" content="Zikreddin Şık | Unity & C# Game Developer" />
+          <meta property="og:description" content="Game development, selected projects, and engineering journey." />
+          <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
         </Head>
-        <body>
-          <Main />
-          <NextScript />
-        </body>
+        <body><Main /><NextScript /></body>
       </Html>
     );
   }
