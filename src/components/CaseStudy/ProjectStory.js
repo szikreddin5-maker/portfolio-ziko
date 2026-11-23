@@ -82,7 +82,10 @@ const Section = styled.section`
   p, li { color: #b7c6d8; font-size: 1.6rem; line-height: 1.8; }
   ul { list-style: none; padding: 0; margin-top: 10px; }
   li { margin: 0 0 12px; padding-left: 21px; position: relative; }
-  li::before { content: '—'; color: #67e8f9; position: absolute; left: 0; }
+  ul li::before { content: '—'; color: #67e8f9; position: absolute; left: 0; }
+  ol { margin: 0; padding-left: 24px; }
+  ol li { padding-left: 6px; }
+  ol li::marker { color: #67e8f9; }
 `;
 const Aside = styled.aside`
   padding: 24px;
@@ -145,9 +148,11 @@ const ProjectStory = ({ project }) => (
             <ul>{project.challenges.map(item => <li key={item}>{item}</li>)}</ul>
           </Section>
           {project.example && (
-            <Section>
+            <Section id={project.example.id}>
               <h2>{project.example.title}</h2>
-              <p>{project.example.description}</p>
+              <ol>
+                {project.example.steps.map(step => <li key={step}>{step}</li>)}
+              </ol>
             </Section>
           )}
           {project.lab && (

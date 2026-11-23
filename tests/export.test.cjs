@@ -16,10 +16,13 @@ test('the static export provides homepage and project case studies', () => {
   assert.match(index, /Twelve zones/);
   assert.match(index, /Player 4/);
   assert.match(index, /Selected Work/);
+  assert.match(index, /href="#board-lab"[^>]*>Explore the tabletop layout<\/a>/);
+  assert.match(index, /id="board-lab"/);
+  assert.match(index, /href="\/projects\/disiplin#focus-session"[^>]*>See a focus session<\/a>/);
   assert.match(trompet, /My contributions/);
   assert.match(trompet, /Three|three/);
   assert.match(disiplin, /Closed testing/);
-  assert.match(disiplin, /A focus session/);
+  assert.match(disiplin, /id="focus-session"[^>]*><h2>A focus session<\/h2><ol>/);
   assert.match(notFound, /404/);
 });
 

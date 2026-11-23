@@ -21,8 +21,13 @@ const project = {
     'Preparing a meaningful, public-facing showcase while the app remains in closed testing.',
   ],
   example: {
+    id: 'focus-session',
     title: 'A focus session',
-    description: 'Choose a duration and start the countdown. The session completes when the timer expires. Leaving the app while the countdown is active interrupts the session.',
+    steps: [
+      'Choose how much time to spend on the task.',
+      'Start the countdown and keep the app open while you focus.',
+      'When the timer runs out, the app marks the session complete. Leaving the app early interrupts it.',
+    ],
   },
   next: 'Record a focus session from the Android test build so visitors can inspect the flow without a Google Play test account.',
   external: {
