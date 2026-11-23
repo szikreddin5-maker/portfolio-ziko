@@ -1,4 +1,5 @@
 import Head from 'next/head';
+import Reveal from '../components/Reveal/Reveal';
 import Acomplishments from '../components/Acomplishments/Acomplishments';
 import Hero from '../components/Hero/Hero';
 import Projects from '../components/Projects/Projects';
@@ -15,11 +16,11 @@ const Home = () => (
       <meta property="og:type" content="website" />
     </Head>
     <Hero />
-    <Projects />
-    <Skills />
-    <Timeline />
-    <Acomplishments />
-    <Technologies />
+    <Reveal><Projects /></Reveal>
+    <Reveal><Skills /></Reveal>
+    <Reveal><Timeline /></Reveal>
+    <Reveal><Acomplishments /></Reveal>
+    <Reveal><Technologies /></Reveal>
   </Layout>
 );
 export default Home;
