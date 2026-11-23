@@ -144,6 +144,15 @@ const ProjectStory = ({ project }) => (
             <h2>Challenges & lessons</h2>
             <ul>{project.challenges.map(item => <li key={item}>{item}</li>)}</ul>
           </Section>
+          {project.lab && (
+            <Section>
+              <h2>Technical design note</h2>
+              <p>{project.lab}</p>
+              <p style={{ marginTop: 16 }}>
+                <a style={{ color: '#67e8f9' }} href="/#board-lab">Explore the interactive 4 × 3 layout study ↗</a>
+              </p>
+            </Section>
+          )}
           <Section>
             <h2>What's next</h2>
             <p>{project.next}</p>
