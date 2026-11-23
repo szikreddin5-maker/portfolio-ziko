@@ -4,6 +4,7 @@ on:
   pull_request:
     paths:
       - 'src/**'
+      - 'tests/**'
       - 'package.json'
       - 'package-lock.json'
       - 'next.config.js'
@@ -26,3 +27,5 @@ jobs:
         run: npm ci --legacy-peer-deps
       - name: Verify static export
         run: npm run build
+      - name: Run geometry and privacy-contract tests
+        run: npm test
