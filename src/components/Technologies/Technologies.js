@@ -8,7 +8,6 @@ const Technologies = () => (
     <SectionDivider divider />
     <SectionTitle>Beyond the Code</SectionTitle>
     <SectionText>
-      I'm a computer engineering student curious about the intersection of games, systems and people.
       Outside development, these interests help me stay creative and disciplined.
     </SectionText>
     <HobbyGrid>

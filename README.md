@@ -1,6 +1,6 @@
 # Zikreddin Şık — Personal Portfolio
 
-Portfolio for a computer engineering student focused on **Unity & C# game development**, selected product projects, and community leadership.
+Zikreddin Şık’s portfolio features **Unity and Android projects** and his work leading the Karabük University AI Club.
 
 ## Live site
 https://portfolio-ziko-00.vercel.app/

@@ -9,14 +9,14 @@ const Hero = () => (
   <HeroWrap id="top" aria-labelledby="hero-title">
     <HeroGrid>
       <LeftSection>
-        <Badge>COMPUTER ENGINEERING STUDENT</Badge>
+        <Badge>SOFTWARE DEVELOPMENT · UNITY &amp; ANDROID</Badge>
         <Title id="hero-title">
           <NameAccent>Zikreddin Şık</NameAccent>
         </Title>
         <Lead>
-          I'm a second-year Computer Engineering student and president of the AI Club at Karabük University.
-          I work on TROMPET, a Unity card game, and DİSİPLİN, an Android focus app.
-          I'm looking for a software development internship.
+          I build Unity games and Android apps. I contribute to rule testing for TROMPET, a strategy
+          card game, and release preparation for DİSİPLİN, an Android focus app.
+          I also lead the AI Club at Karabük University.
         </Lead>
         <ButtonRow>
           <PrimaryButton href="#projects">Explore my work <span aria-hidden="true">↗</span></PrimaryButton>

@@ -13,10 +13,10 @@ const Home = () => (
   <Layout>
     <Head>
       <title>Zikreddin Şık | Software Development Portfolio</title>
-      <meta name="description" content="Computer Engineering student at Karabük University. Explore my Unity and Android projects and university club leadership." />
+      <meta name="description" content="Unity and Android projects by Zikreddin Şık, president of the AI Club at Karabük University." />
       <meta property="og:type" content="website" />
       <meta property="og:title" content="Zikreddin Şık | Software Development Portfolio" />
-      <meta property="og:description" content="Explore Unity and Android projects by Zikreddin Şık, a Computer Engineering student at Karabük University." />
+      <meta property="og:description" content="Explore TROMPET, a Unity strategy card game, and DİSİPLİN, an Android focus app." />
       <link rel="canonical" href="https://portfolio-ziko-00.vercel.app/" />
       <meta property="og:url" content="https://portfolio-ziko-00.vercel.app/" />
       <meta name="robots" content="index, follow" />
@@ -27,7 +27,7 @@ const Home = () => (
           '@type': 'Person',
           name: 'Zikreddin Şık',
           url: 'https://portfolio-ziko-00.vercel.app/',
-          description: 'Computer Engineering student working on Unity and Android projects.',
+          description: 'Works on Unity games and Android apps and leads the AI Club at Karabük University.',
           sameAs: [
             'https://github.com/szikreddin5-maker',
             'https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/',
