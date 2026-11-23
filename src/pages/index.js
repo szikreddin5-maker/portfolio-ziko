@@ -15,6 +15,8 @@ const Home = () => (
       <title>Zikreddin Şık | Unity & C# Game Developer</title>
       <meta name="description" content="Game development, selected projects, product experience and community leadership. Explore the work of Zikreddin Şık." />
       <meta property="og:type" content="website" />
+      <meta property="og:title" content="Zikreddin Şık | Unity & C# Game Developer" />
+      <meta property="og:description" content="Explore game development, Unity projects and collaborative product work by Zikreddin Şık." />
       <link rel="canonical" href="https://portfolio-ziko-00.vercel.app/" />
       <meta property="og:url" content="https://portfolio-ziko-00.vercel.app/" />
       <meta name="robots" content="index, follow" />
