@@ -43,3 +43,12 @@ export const SocialContainer = styled.div`
   align-items: center;
   gap: 8px;
 `;
+
+export const FooterSocialLink = styled.a`
+  display: inline-flex;
+  padding: 10px;
+  border-radius: 10px;
+  color: #e2e8f0;
+  transition: color .2s ease, background .2s ease;
+  &:hover { color: #67e8f9; background: rgba(103,232,249,.1); }
+`;
