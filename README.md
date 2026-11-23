@@ -1,10 +1,10 @@
-## Personal Portfolio
+# Zikreddin Şık · Yazılım Portfolyosu
 
-### [Live Site](http://enespolat.surge.sh/)
+Karabük Üniversitesi Bilgisayar Mühendisliği ikinci sınıf öğrencisiyim ve KBÜ Yapay Zeka Kulübü’ne başkanlık ediyorum.
 
-![Portfolio Website](https://i.ibb.co/WgPMpts/image.png)
+[Canlı portfolyoyu aç](https://portfolio-ziko-00.vercel.app/)
 
-We're going to use React and Next.js.
+- **TROMPET** — Unity ile geliştirilen dört oyunculu strateji kart oyunu.
+- **DİSİPLİN** — Odaklanma ve alışkanlık takibi üzerine bir Android uygulaması.
 
-Setup:
-- run ```npm i && npm start```
+Portfolyo Next.js, React ve styled-components ile geliştirildi.
