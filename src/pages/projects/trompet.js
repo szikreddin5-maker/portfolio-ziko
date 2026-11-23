@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectStory from '../../components/CaseStudy/ProjectStory';
 
 const project = {
+  slug: 'trompet',
   title: 'TROMPET',
   category: 'Unity game development',
   stage: 'In development',
