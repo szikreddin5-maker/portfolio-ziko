@@ -1,60 +1,37 @@
-export const hobbies = [
-  {
-    title: 'Klasik Müzik & Keman',
-    description: "Notaların matematiğini ve kas hafızasını birleştiren bir disiplin. Keman pratikleri, yazılım geliştirirken ihtiyaç duyduğum 'deep work' (derin odaklanma) süremi uzatırken, bana sabrı öğretiyor.",
-    image: '/images/keman.webp',
-    id: 0,
-  },
-  {
-    title: 'Satranç & Taktiksel Analiz',
-    description: 'Satranç tahtasındaki oyun teorisi ve hamle hesaplamaları, yazılım mimarisinde birkaç adım sonrasını planlama ve kriz anlarında soğukkanlı kalma refleksimi doğrudan besliyor.',
-    image: '/images/santranc.webp',
-    id: 1,
-  },
-  {
-    title: 'Münazara & Analitik İletişim',
-    description: 'Kompleks argümanları hızlıca sentezleme, çürütme ve kitleye aktarma yeteneği; benim için kod yazmak kadar, doğru iletişimin ve liderliğin de vazgeçilmez bir parçası.',
-    image: '/images/munazara.webp',
-    id: 2,
-  },
-  {
-    title: 'Mekanik & Sürüş Disiplini',
-    description: 'Tamamen kendi çabamla yola çıkardığım Kuba Superlight 200 motosikletim. Rotayı planlamak ve makinenin dinamiğini anlamak; özgürlüğün ve mekanik tutkunun somut bir karşılığı.',
-    image: '/images/motor.webp',
-    id: 3,
-  },
-];
-
+// Public-facing project data. Keep personal details and unverified claims out of this file.
 export const projects = [
   {
+    id: 'trompet',
     title: 'TROMPET',
-    intro: 'Şansa Karşı Saf Zekâ | 2D Stratejik Kart Oyunu',
-    description: 'Unity (C#) ile geliştirilen, Durum Makinesi (State Machine) mimarisiyle kart etkileşimlerini ve asenkron animasyon kuyruklarını yöneten hibrit bir strateji simülasyonu.',
+    intro: 'Tabletop strategy card game · Team project',
+    description: 'A strategic card game developed with Unity. My current work focuses on the 3D tabletop scene, player and character placement, camera framing, and the visual presentation of card areas.',
     image: '/images/trompet.webp',
     imagePosition: 'center 40%',
-    tags: ['Unity (C#)', 'Game Theory', 'State Pattern'],
-    actions: [
-      { label: 'Geliştirme Aşamasında', type: 'badge' },
-    ],
-    id: 0,
+    tags: ['Unity', 'C# ecosystem', '3D Scene Design', 'Teamwork'],
+    role: 'Unity scene & visual presentation',
+    stage: 'In development',
+    caseStudy: '/projects/trompet',
+    actions: [{ label: 'View project story', type: 'primary', href: '/projects/trompet' }],
   },
   {
+    id: 'disiplin',
     title: 'DİSİPLİN',
-    intro: 'Kişisel Odaklanma & Topluluk Verimlilik Ekosistemi',
-    description: 'Yönettiğim yapay zeka kulübü ekosisteminde görevleri ve rutinleri koordine etmek için tasarladığım hibrit yönetim platformu. Room DB, Firebase ve yapay zekâ entegrasyonlu Android motoru.',
+    intro: 'Android focus & productivity application',
+    description: 'A mobile product exploring focus, routines and community coordination. Its Android technology stack includes Kotlin, local persistence, Firebase and AI integration.',
     image: '/images/disiplin.png',
-    tags: ['Android (Kotlin)', 'Firebase', 'Gemini AI', 'Room DB'],
+    tags: ['Kotlin', 'Android', 'Room', 'Firebase'],
+    role: 'Product development & collaboration',
+    stage: 'Closed testing',
+    caseStudy: '/projects/disiplin',
     actions: [
-      { label: 'Google Play (Kapalı Test)', type: 'primary', href: 'https://play.google.com/apps/testing/com.disiplin.app' },
+      { label: 'View project story', type: 'primary', href: '/projects/disiplin' },
+      { label: 'Google Play test', type: 'secondary', href: 'https://play.google.com/apps/testing/com.disiplin.app' },
     ],
-    id: 1,
   },
 ];
 
-export const TimeLineData = [
-  { year: 2008, text: 'KTU Elk. Elk. Muh mezun oldum', },
-  { year: 2009, text: 'Türk Telekom Uzman yardımcısı olarak işe başladım', },
-  { year: 2013, text: 'Türk Telekom DC Enerji Uzmanı', },
-  { year: 2016, text: 'Türk Telekom DC Enerji Yönetici', },
-  { year: 2017, text: 'Türk Telekom ESS Müdürü', },
+export const hobbies = [
+  { id: 'music', title: 'Classical music & violin', description: 'Patience, consistent practice and deep focus.', image: '/images/keman.webp' },
+  { id: 'chess', title: 'Chess', description: 'Strategic thinking and learning from each move.', image: '/images/santranc.webp' },
+  { id: 'debate', title: 'Debate', description: 'Clear arguments, listening and effective communication.', image: '/images/munazara.webp' },
 ];
