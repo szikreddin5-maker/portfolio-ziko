@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "set NODE_OPTIONS=--openssl-legacy-provider && next dev",
-    "build": "set NODE_OPTIONS=--openssl-legacy-provider && next build && next export",
-    "start": "next start"
+    "dev": "node --openssl-legacy-provider ./node_modules/next/dist/bin/next dev",
+    "build": "node --openssl-legacy-provider ./node_modules/next/dist/bin/next build && node --openssl-legacy-provider ./node_modules/next/dist/bin/next export",
+    "start": "node --openssl-legacy-provider ./node_modules/next/dist/bin/next start"
   },
   "dependencies": {
     "lucide-react": "^0.263.1",
