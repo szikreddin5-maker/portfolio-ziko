@@ -2,6 +2,7 @@ import React from 'react';
 import ProjectStory from '../../components/CaseStudy/ProjectStory';
 
 const project = {
+  slug: 'disiplin',
   title: 'DİSİPLİN',
   category: 'Android product development',
   stage: 'Closed testing',
