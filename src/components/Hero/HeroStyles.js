@@ -7,7 +7,8 @@ const reveal = keyframes`
 
 export const HeroWrap = styled.section`
   position: relative;
-  max-width: 1136px;
+  max-width: 1120px;
+  box-sizing: border-box;
   margin: 0 auto;
   padding: clamp(64px, 9vw, 136px) 48px 86px;
   @media ${p => p.theme.breakpoints.sm} { padding: 48px 16px 56px; }
