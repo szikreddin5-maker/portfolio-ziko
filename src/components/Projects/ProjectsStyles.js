@@ -44,6 +44,9 @@ export const BlogCard = styled.div`
   flex-direction: column;
   height: 100%;
   width: 100%;
+  transition: transform .28s ease, border-color .28s ease;
+  &:hover { transform: translateY(-4px); border-color: rgba(103, 232, 249, .45); }
+  @media (prefers-reduced-motion: reduce) { transition: none; &:hover { transform: none; } }
   text-align: center;
   border-radius: 16px;
   overflow: hidden;
@@ -73,7 +76,7 @@ export const Hr = styled.hr`
   height: 3px;
   margin: 20px auto;
   border: 0;
-  background: #d0bb57;
+  background: #67e8f9;
 `;
 
 export const Intro = styled.div`
@@ -88,7 +91,6 @@ export const Intro = styled.div`
 
 export const CardInfo = styled.p`
   width: 100%;
-  flex: 1;
   padding: 0 28px;
   color: #e4e6e7;
   font-size: 1.5rem;
