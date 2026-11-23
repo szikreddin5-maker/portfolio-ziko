@@ -21,10 +21,11 @@ npm run dev
 
 The scripts explicitly pass a legacy OpenSSL compatibility flag for the current build setup. **This is an interim compatibility step, not a security upgrade.** A framework migration and fresh dependency audit are still needed.
 
-Production static build:
+Production static build and tests:
 
 ```bash
 npm run build
+npm test
 ```
 
 The command creates a static site in `out/`. No server-side contact form or database is required for this portfolio. Reach-out uses a direct email link.
@@ -42,3 +43,31 @@ The command creates a static site in `out/`. No server-side contact form or data
 - Review and update dependencies with a separate tested migration PR.
 - Remove tracked `node_modules/` from Git history/index in a dedicated cleanup.
 - Verify desktop/mobile layouts, accessibility and static-export build before production release.
+
+## Interactive TROMPET design study
+
+The homepage includes an SVG **presentation concept**, not a playable game demo. It visualizes the four rabbit players around one table with three independent card zones per player.
+
+Its geometry lives in `src/lib/boardGeometry.js`, which calculates each player using radial unit vectors:
+
+- Player angle: `theta(i) = -PI/2 + 2PI*i/4`
+- Outward normal: `n(i) = (cos theta(i), sin theta(i))`
+- Tangent: `t(i) = (-sin theta(i), cos theta(i))`
+- Zone position: `q(i,j) = center + radius*n(i) + (j-1)*gap*t(i)`
+
+This is deterministic, uses **O(P·Z)** geometry operations, and renders exactly 12 zones for P=4 and Z=3. It does not require WebGL or a continuous animation loop. Unit tests verify symmetry, separation, bounds and invalid inputs.
+
+## Automated quality gates
+
+The GitHub Actions workflow runs the static export and Node.js built-in tests:
+
+- Correct generated routes and canonical project pages
+- Current public output omits the superseded CV and telephone links
+- English-language, keyboard-accessible player controls
+- Gzipped JavaScript budget of **155 KiB** for homepage external Next.js chunks
+- Featured cover artwork budget of **200 KiB**
+- Required response-security headers plus robots.txt and sitemap.xml
+
+The JavaScript budget uses deterministic local gzip estimates, **not real network timings or Lighthouse scores**. Mobile visual QA and Core Web Vitals measurements still require a working preview deployment.
+
+The currently tracked `node_modules` directory is being removed in separate draft PR #2 to avoid obscuring design changes with thousands of unrelated deletions.
