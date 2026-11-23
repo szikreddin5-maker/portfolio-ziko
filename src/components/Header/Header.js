@@ -6,11 +6,11 @@ import {
 } from './HeaderStyles';
 
 const navItems = [
-  { href: '#projects', label: 'Work' },
-  { href: '#skills', label: 'Skills' },
-  { href: '#leadership', label: 'Leadership' },
-  { href: '#about', label: 'About' },
-  { href: '#contact', label: 'Contact' },
+  { href: '/#projects', label: 'Work' },
+  { href: '/#skills', label: 'Skills' },
+  { href: '/#leadership', label: 'Leadership' },
+  { href: '/#about', label: 'About' },
+  { href: '/#contact', label: 'Contact' },
 ];
 
 const Header = () => {
@@ -21,10 +21,10 @@ const Header = () => {
     <HeaderBar>
       <Container>
         <Logo>
-          <LogoCrest as="a" href="#top" onClick={closeMenu} aria-label="Back to top">
+          <LogoCrest as="a" href="/#top" onClick={closeMenu} aria-label="Back to top">
             <LogoImg src="/logo-mark.png" alt="" />
           </LogoCrest>
-          <LogoName href="#top" onClick={closeMenu}>Zikreddin Şık</LogoName>
+          <LogoName href="/#top" onClick={closeMenu}>Zikreddin Şık</LogoName>
         </Logo>
         <DesktopNav aria-label="Main navigation">
           {navItems.map((item) => (
