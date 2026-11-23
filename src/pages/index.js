@@ -15,6 +15,24 @@ const Home = () => (
       <title>Zikreddin Şık | Unity & C# Game Developer</title>
       <meta name="description" content="Game development, selected projects, product experience and community leadership. Explore the work of Zikreddin Şık." />
       <meta property="og:type" content="website" />
+      <link rel="canonical" href="https://portfolio-ziko-00.vercel.app/" />
+      <meta property="og:url" content="https://portfolio-ziko-00.vercel.app/" />
+      <meta name="robots" content="index, follow" />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify({
+          '@context': 'https://schema.org',
+          '@type': 'Person',
+          name: 'Zikreddin Şık',
+          url: 'https://portfolio-ziko-00.vercel.app/',
+          description: 'Computer Engineering student focused on Unity and C# game development.',
+          sameAs: [
+            'https://github.com/szikreddin5-maker',
+            'https://www.linkedin.com/in/zikreddin%C5%9F%C4%B1k/',
+          ],
+          knowsAbout: ['Unity', 'C#', 'Game Development', 'Android', 'Software Engineering'],
+        }).replace(/</g, '\\u003c') }}
+      />
     </Head>
     <Hero />
     <Reveal><Projects /></Reveal>
