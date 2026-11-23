@@ -13,6 +13,9 @@ const GlobalStyles = createGlobalStyle`
     font-size: 62.5%;
     scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html { scroll-behavior: auto; }
+  }
   [id] {
     scroll-margin-top: 88px;
   }

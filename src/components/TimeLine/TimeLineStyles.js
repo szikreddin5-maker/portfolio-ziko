@@ -20,9 +20,11 @@ export const VisionCard = styled.article`
   background: linear-gradient(165deg, rgba(34, 211, 238, 0.08), rgba(15, 22, 36, 0.35));
   transition: border-color 0.3s ease, transform 0.3s ease;
 
-  &:hover {
-    border-color: rgba(34, 211, 238, 0.45);
-    transform: translateY(-4px);
+  @media (hover: hover) and (prefers-reduced-motion: no-preference) {
+    &:hover {
+      border-color: rgba(34, 211, 238, 0.45);
+      transform: translateY(-4px);
+    }
   }
 `;
 

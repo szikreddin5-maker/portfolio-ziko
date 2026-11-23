@@ -1,28 +1,29 @@
 import styled, { keyframes } from 'styled-components';
 
+const introIn = keyframes`
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+`;
+
 export const HeroWrap = styled.section`
   position: relative;
   width: 100%;
-  max-width: 1040px;
+  max-width: 1136px;
   margin: 0 auto;
-  padding: 48px 48px 24px;
-  box-sizing: content-box;
-  overflow: visible;
+  padding: clamp(40px, 7vw, 88px) clamp(20px, 5vw, 48px) 40px;
 
-  @media ${(props) => props.theme.breakpoints.md} {
-    padding: 32px 48px 16px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    padding: 16px 16px 8px;
-    width: calc(100vw - 32px);
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation: none;
+      transition: none;
+    }
   }
 `;
 
 export const BgLayer = styled.div`
   position: absolute;
-  top: -20px;
-  right: -40px;
+  top: 0;
+  right: 0;
   width: min(520px, 48%);
   opacity: 0.55;
   pointer-events: none;
@@ -35,8 +36,11 @@ export const BgLayer = styled.div`
 
   @media ${(props) => props.theme.breakpoints.md} {
     width: 280px;
-    right: -16px;
     opacity: 0.28;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    display: none;
   }
 `;
 
@@ -45,7 +49,7 @@ export const HeroGrid = styled.div`
   z-index: 1;
   display: grid;
   grid-template-columns: minmax(0, 1.15fr) minmax(280px, 0.85fr);
-  gap: 48px;
+  gap: clamp(28px, 6vw, 80px);
   align-items: center;
 
   @media ${(props) => props.theme.breakpoints.md} {
@@ -57,6 +61,13 @@ export const HeroGrid = styled.div`
 export const LeftSection = styled.div`
   width: 100%;
   min-width: 0;
+
+  @media (prefers-reduced-motion: no-preference) {
+    > * { animation: ${introIn} 520ms ease-out backwards; }
+    > :nth-child(2) { animation-delay: 80ms; }
+    > :nth-child(3) { animation-delay: 160ms; }
+    > :nth-child(4) { animation-delay: 240ms; }
+  }
 `;
 
 export const RightSection = styled.div`
@@ -68,8 +79,8 @@ export const RightSection = styled.div`
   gap: 20px;
   min-width: 0;
 
-  @media ${(props) => props.theme.breakpoints.md} {
-    order: -1;
+  @media (prefers-reduced-motion: no-preference) {
+    animation: ${introIn} 650ms ease-out 140ms backwards;
   }
 `;
 
@@ -87,19 +98,13 @@ export const Badge = styled.p`
 
 export const Title = styled.h1`
   font-weight: 800;
-  font-size: 40px;
-  line-height: 1.25;
+  font-size: clamp(4.2rem, 6.4vw, 7.4rem);
+  line-height: 1.08;
+  letter-spacing: -0.045em;
   color: #fff;
   margin-bottom: 16px;
   max-width: 100%;
 
-  @media ${(props) => props.theme.breakpoints.md} {
-    font-size: 32px;
-  }
-
-  @media ${(props) => props.theme.breakpoints.sm} {
-    font-size: 26px;
-  }
 `;
 
 export const NameLine = styled.p`
@@ -115,7 +120,6 @@ export const NameLine = styled.p`
 `;
 
 export const NameAccent = styled.span`
-  white-space: nowrap;
   background: linear-gradient(90deg, #22d3ee 0%, #3b82f6 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
@@ -127,7 +131,7 @@ export const Lead = styled.p`
   font-size: 20px;
   line-height: 34px;
   font-weight: 300;
-  color: rgba(255, 255, 255, 0.62);
+  color: #cad5e3;
   padding-bottom: 28px;
 
   @media ${(props) => props.theme.breakpoints.md} {
@@ -156,8 +160,8 @@ export const PrimaryButton = styled.a`
   border-radius: 999px;
   font-size: 16px;
   font-weight: 600;
-  color: #fff;
-  background: linear-gradient(270deg, #13ADC7 0%, #3b82f6 100%);
+  color: #071826;
+  background: linear-gradient(270deg, #67e8f9 0%, #60a5fa 100%);
   transition: transform 0.25s ease, opacity 0.25s ease;
 
   &:hover {
@@ -165,8 +169,12 @@ export const PrimaryButton = styled.a`
     opacity: 0.92;
   }
 
+  &:focus-visible {
+    outline: 2px solid #67e8f9;
+    outline-offset: 4px;
+  }
+
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 100%;
     font-size: 14px;
     padding: 12px 18px;
   }
@@ -191,8 +199,12 @@ export const SecondaryButton = styled.a`
     color: #fff;
   }
 
+  &:focus-visible {
+    outline: 2px solid #67e8f9;
+    outline-offset: 4px;
+  }
+
   @media ${(props) => props.theme.breakpoints.sm} {
-    width: 100%;
     font-size: 14px;
     padding: 12px 18px;
   }
@@ -200,7 +212,7 @@ export const SecondaryButton = styled.a`
 
 export const PhotoCard = styled.button`
   position: relative;
-  width: min(320px, 100%);
+  width: min(260px, 100%);
   padding: 10px;
   border-radius: 24px;
   border: 1px solid rgba(6, 182, 212, 0.3);
@@ -224,12 +236,15 @@ export const PhotoCard = styled.button`
     pointer-events: none;
   }
 
-  &:hover,
-  &:focus-visible {
+  &:hover {
     transform: translateY(-3px);
     border-color: rgba(34, 211, 238, 0.7);
     box-shadow: 0 0 24px rgba(6, 182, 212, 0.18);
-    outline: none;
+  }
+
+  &:focus-visible {
+    outline: 2px solid #67e8f9;
+    outline-offset: 4px;
   }
 `;
 
@@ -351,6 +366,7 @@ export const ModalCard = styled.div`
   border: 1px solid rgba(34, 211, 238, 0.22);
   border-radius: 20px;
   box-shadow: 0 24px 64px rgba(0, 0, 0, 0.45);
+  animation: ${quoteIn} 260ms ease-out;
 `;
 
 export const ModalBanner = styled.div`
@@ -442,7 +458,7 @@ export const ModalText = styled.p`
 `;
 
 export const Terminal = styled.div`
-  width: min(360px, 100%);
+  width: min(320px, 100%);
   background: #0b1220;
   border: 1px solid rgba(148, 163, 184, 0.18);
   border-radius: 12px;
@@ -487,7 +503,8 @@ export const TerminalBody = styled.div`
 export const CodeSizer = styled.pre`
   margin: 0;
   font: inherit;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   visibility: hidden;
   pointer-events: none;
 `;
@@ -500,7 +517,8 @@ export const CodeTyped = styled.pre`
   bottom: 18px;
   left: 18px;
   font: inherit;
-  white-space: pre;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
   overflow: hidden;
 `;
 

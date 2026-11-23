@@ -1,4 +1,4 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 
 import BgAnimation from '../BackgrooundAnimation/BackgroundAnimation';
 import {
@@ -47,7 +47,7 @@ import {
 
 const CODE_TOKENS = [
   { t: 'kw', v: 'const' },
-  { t: 'plain', v: ' engineer = ' },
+  { t: 'plain', v: ' profile = ' },
   { t: 'punct', v: '{' },
   { t: 'plain', v: '\n  ' },
   { t: 'key', v: 'name' },
@@ -59,35 +59,29 @@ const CODE_TOKENS = [
   { t: 'key', v: 'role' },
   { t: 'punct', v: ':' },
   { t: 'plain', v: ' ' },
-  { t: 'str', v: '"Software Development"' },
+  { t: 'str', v: '"Yazılım geliştirme"' },
   { t: 'punct', v: ',' },
   { t: 'plain', v: '\n  ' },
   { t: 'key', v: 'leadership' },
   { t: 'punct', v: ':' },
   { t: 'plain', v: ' ' },
-  { t: 'str', v: '"President @ KBÜ AI Club"' },
+  { t: 'str', v: '"KBÜ AI Kulübü Başkanı"' },
   { t: 'punct', v: ',' },
   { t: 'plain', v: '\n  ' },
   { t: 'key', v: 'focus' },
   { t: 'punct', v: ':' },
   { t: 'plain', v: ' ' },
   { t: 'punct', v: '[' },
-  { t: 'str', v: '"Game Systems (Unity/C#)"' },
+  { t: 'str', v: '"Unity"' },
   { t: 'punct', v: ',' },
-  { t: 'plain', v: '\n               ' },
-  { t: 'str', v: '"Web & AI Integration"' },
+  { t: 'plain', v: ' ' },
+  { t: 'str', v: '"Android"' },
   { t: 'punct', v: '],' },
   { t: 'plain', v: '\n  ' },
   { t: 'key', v: 'personality' },
   { t: 'punct', v: ':' },
   { t: 'plain', v: ' ' },
   { t: 'str', v: '"ENTJ-A"' },
-  { t: 'punct', v: ',' },
-  { t: 'plain', v: '\n  ' },
-  { t: 'key', v: 'status' },
-  { t: 'punct', v: ':' },
-  { t: 'plain', v: ' ' },
-  { t: 'str', v: '"Building solutions & expanding ecosystems"' },
   { t: 'plain', v: '\n' },
   { t: 'punct', v: '};' },
 ];
@@ -100,7 +94,7 @@ const TOKEN_TAGS = {
   plain: Plain,
 };
 
-const CHAR_MS = 36;
+const CHAR_MS = 20;
 
 const renderTokens = (tokens, charCount) => {
   let remaining = charCount;
@@ -151,11 +145,11 @@ const TypewriterCode = () => {
   }, [totalChars]);
 
   return (
-    <TerminalBody aria-label="engineer.js">
+    <TerminalBody aria-hidden="true">
       <CodeSizer aria-hidden="true">{renderTokens(CODE_TOKENS, totalChars)}</CodeSizer>
       <CodeTyped>
         {renderTokens(CODE_TOKENS, visibleChars)}
-        <Cursor aria-hidden="true">|</Cursor>
+        {visibleChars < totalChars && <Cursor>|</Cursor>}
       </CodeTyped>
     </TerminalBody>
   );
@@ -163,12 +157,20 @@ const TypewriterCode = () => {
 
 const Hero = () => {
   const [profileOpen, setProfileOpen] = useState(false);
+  const photoButton = useRef(null);
+  const closeButton = useRef(null);
 
   useEffect(() => {
     if (!profileOpen) return undefined;
 
+    const trigger = photoButton.current;
+    closeButton.current?.focus();
     const onKey = (event) => {
       if (event.key === 'Escape') setProfileOpen(false);
+      if (event.key === 'Tab') {
+        event.preventDefault();
+        closeButton.current?.focus();
+      }
     };
 
     document.addEventListener('keydown', onKey);
@@ -178,33 +180,33 @@ const Hero = () => {
     return () => {
       document.removeEventListener('keydown', onKey);
       document.body.style.overflow = previousOverflow;
+      trigger?.focus();
     };
   }, [profileOpen]);
 
   return (
-  <HeroWrap>
-    <BgLayer>
+  <HeroWrap aria-labelledby="intro-title">
+    <BgLayer aria-hidden="true">
       <BgAnimation />
     </BgLayer>
     <HeroGrid>
       <LeftSection>
-        <Badge>YAZILIM GELİŞTİRME · UNITY VE ANDROID</Badge>
-        <Title>
+        <Badge>Yazılım geliştirme ve topluluk liderliği</Badge>
+        <Title id="intro-title">
           <NameAccent>Zikreddin Şık</NameAccent>
         </Title>
         <Lead>
-          Unity ile oyun, Android için mobil uygulama geliştiriyorum. TROMPET’te oyun kurallarını
-          test etmeye, DİSİPLİN’de Android test sürümünü hazırlamaya katkı veriyorum.
           Karabük Üniversitesi Yapay Zeka Kulübü’ne başkanlık ediyorum.
+          Ekip arkadaşlarımla Unity’de oyun ve Android’de mobil uygulama geliştiriyorum.
         </Lead>
         <ButtonRow>
-          <PrimaryButton href="#projects">Projeleri Keşfet</PrimaryButton>
-          <SecondaryButton href="#contact">İletişime Geç</SecondaryButton>
+          <PrimaryButton href="#about">Hakkımda</PrimaryButton>
+          <SecondaryButton href="#contact">İletişime geç</SecondaryButton>
         </ButtonRow>
       </LeftSection>
 
       <RightSection>
-        <PhotoCard type="button" onClick={() => setProfileOpen(true)} aria-haspopup="dialog" aria-expanded={profileOpen}>
+        <PhotoCard ref={photoButton} type="button" onClick={() => setProfileOpen(true)} aria-haspopup="dialog" aria-expanded={profileOpen}>
           <ImageWrapper>
             <ProfileImg src="/profile.webp" alt="Zikreddin Şık" />
             <PhotoOverlay>
@@ -219,7 +221,7 @@ const Hero = () => {
             <Dot color="#ff5f56" />
             <Dot color="#ffbd2e" />
             <Dot color="#27c93f" />
-            <TerminalTitle>engineer.js</TerminalTitle>
+            <TerminalTitle>profile.js</TerminalTitle>
           </TerminalBar>
           <TypewriterCode />
         </Terminal>
@@ -234,7 +236,7 @@ const Hero = () => {
           aria-labelledby="profile-title"
           onClick={(event) => event.stopPropagation()}
         >
-          <ModalClose type="button" onClick={() => setProfileOpen(false)} aria-label="Kapat">
+          <ModalClose ref={closeButton} type="button" onClick={() => setProfileOpen(false)} aria-label="Kapat">
             ×
           </ModalClose>
           <ModalBanner>

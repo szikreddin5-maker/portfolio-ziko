@@ -10,11 +10,11 @@ const Home = () => {
   return (
     <Layout>
       <Hero />
-      <Projects />
-      <Skills />
-      <Technologies />
       <Timeline />
       <Acomplishments />
+      <Skills />
+      <Technologies />
+      <Projects />
     </Layout>
   );
 };
