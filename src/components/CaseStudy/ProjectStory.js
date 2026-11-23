@@ -114,6 +114,7 @@ const ProjectStory = ({ project }) => (
       <meta name="description" content={project.description} />
       <meta property="og:title" content={project.title + ' — Case Study'} />
       <meta property="og:description" content={project.description} />
+      <link rel="canonical" href={"https://portfolio-ziko-00.vercel.app/projects/" + project.slug} />
     </Head>
     <Wrapper>
       <Back href="/#projects">← All projects</Back>
