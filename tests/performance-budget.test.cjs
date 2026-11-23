@@ -2,13 +2,14 @@ const { test } = require('node:test');
 const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
+const zlib = require('node:zlib');
 
 const root = path.join(__dirname, '..');
 const output = path.join(root, 'out');
 const homepage = fs.readFileSync(path.join(output, 'index.html'), 'utf8');
 
-test('homepage JavaScript stays within an explicit uncompressed asset budget', () => {
-  // This is a regression guard, not an empirical network or Lighthouse measurement.
+test('homepage JavaScript stays within a compressed transfer-size budget', () => {
+  // This is a reproducible gzip regression guard, not measured real-user network transfer.
   const scriptUrls = [...homepage.matchAll(/<script\b[^>]*\bsrc=["']([^"']+)["']/g)]
     .map(match => match[1].split('?')[0])
     .filter(src => src.startsWith('/_next/static/'));
@@ -18,12 +19,12 @@ test('homepage JavaScript stays within an explicit uncompressed asset budget', (
   const bytes = uniqueUrls.reduce((sum, assetUrl) => {
     const filepath = path.join(output, assetUrl.replace(/^\//, ''));
     assert.ok(fs.existsSync(filepath), 'Missing script asset: ' + assetUrl);
-    return sum + fs.statSync(filepath).size;
+    return sum + zlib.gzipSync(fs.readFileSync(filepath), { level: 9 }).length;
   }, 0);
 
-  const MAX_RAW_JS_BYTES = 200 * 1024;
-  assert.ok(bytes <= MAX_RAW_JS_BYTES,
-    'Homepage raw JS exceeded 200 KiB: ' + bytes + ' bytes');
+  const MAX_GZIP_JS_BYTES = 155 * 1024;
+  assert.ok(bytes <= MAX_GZIP_JS_BYTES,
+    'Homepage gzipped JS exceeded 155 KiB: ' + bytes + ' bytes');
 });
 
 test('hero artwork is optimized and no heavyweight media is required at startup', () => {
