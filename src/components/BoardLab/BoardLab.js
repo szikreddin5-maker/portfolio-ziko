@@ -168,6 +168,31 @@ const Inspector = styled.div`
   p { color: #aebfd2; font-size: 1.35rem; margin: 0; }
 `;
 
+const Method = styled.details`
+  margin-top: 18px;
+  border-top: 1px solid rgba(148,163,184,.13);
+  padding-top: 14px;
+  summary {
+    cursor: pointer;
+    color: #c7d7e8;
+    font-size: 1.32rem;
+    font-weight: 600;
+    width: fit-content;
+  }
+  summary:hover, summary:focus-visible { color: #67e8f9; }
+  p { color: #aebfd2; font-size: 1.28rem; line-height: 1.65; max-width: 850px; margin: 12px 0; }
+  code {
+    display: block;
+    color: #86e9d8;
+    font: 1.22rem/1.75 'JetBrains Mono', monospace;
+    overflow-x: auto;
+    padding: 12px 14px;
+    border-radius: 9px;
+    background: rgba(5,12,25,.55);
+    white-space: nowrap;
+  }
+`;
+
 const Footnote = styled.p`
   margin: 22px 0 0;
   color: #8299b3;
@@ -177,10 +202,9 @@ const Footnote = styled.p`
 
 export default function BoardLab() {
   const [active, setActive] = useState(0);
-  const selected = positions[active];
 
   return (
-    <Shell aria-labelledby="board-lab-title">
+    <Shell id="board-lab" aria-labelledby="board-lab-title">
       <Header>
         <div>
           <Eyebrow>THE DESIGN PROCESS / 01</Eyebrow>
@@ -282,6 +306,15 @@ export default function BoardLab() {
         Built as a lightweight SVG with deterministic radial geometry. No animation engine,
         tracking script or canvas render loop is required.
       </Footnote>
+      <Method>
+        <summary>Explore the geometry behind the diagram</summary>
+        <p>Players are spaced uniformly around the center. Each player's three card zones are offset
+        along their local tangent rather than manually positioned.</p>
+        <code>theta(i) = -PI/2 + i * 2PI / 4</code>
+        <code>zone(i,j) = center + radius * normal(i) + (j - 1) * gap * tangent(i)</code>
+        <p>Generating the positions costs O(players × zones), here only 12 zone calculations.
+        The browser renders a fixed SVG and changes the selected-player highlight on interaction.</p>
+      </Method>
     </Shell>
   );
 }
