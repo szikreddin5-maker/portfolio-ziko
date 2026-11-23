@@ -1,27 +1,26 @@
 import React from 'react';
-
 import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalComponents';
 import { Box, Boxes, BoxNum, BoxText } from './AcomplishmentsStyles';
 
-const data = [
-  { number: '600+', text: 'Yapay Zeka Kulübüm üye sayısı'},
-  { number: '1.', text: 'Münazara Bölge Şampiyonu' },
-  { number: '3.', text: 'İl Satranç Turnuvası Derecesi 2026' },
-  { number: '117.263', text: '2024 Sayısal YKS sıralaması' },
+// Curated public achievements. Personal exam rankings are intentionally omitted.
+const achievements = [
+  { number: '600+', text: 'University AI club community members' },
+  { number: '1st', text: 'Regional debate competition' },
+  { number: '3rd', text: 'Provincial chess tournament, 2026' },
 ];
 
 const Acomplishments = () => (
-  <Section>
-    <SectionTitle>Kişisel Başarılar</SectionTitle>
+  <Section aria-labelledby="achievements-title">
+    <SectionTitle id="achievements-title">Selected Achievements</SectionTitle>
     <Boxes>
-      {data.map((card, index) => (
-        <Box key={index}>
-          <BoxNum>{card.number}</BoxNum>
-          <BoxText>{card.text}</BoxText>
+      {achievements.map(({ number, text }) => (
+        <Box key={text}>
+          <BoxNum>{number}</BoxNum>
+          <BoxText>{text}</BoxText>
         </Box>
       ))}
     </Boxes>
-    <SectionDivider/>
+    <SectionDivider />
   </Section>
 );
 
