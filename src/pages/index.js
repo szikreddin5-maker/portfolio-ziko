@@ -2,6 +2,7 @@ import Head from 'next/head';
 import Reveal from '../components/Reveal/Reveal';
 import Acomplishments from '../components/Acomplishments/Acomplishments';
 import Hero from '../components/Hero/Hero';
+import BoardLab from '../components/BoardLab/BoardLab';
 import Projects from '../components/Projects/Projects';
 import Skills from '../components/Skills/Skills';
 import Technologies from '../components/Technologies/Technologies';
@@ -17,6 +18,7 @@ const Home = () => (
     </Head>
     <Hero />
     <Reveal><Projects /></Reveal>
+    <Reveal><BoardLab /></Reveal>
     <Reveal><Skills /></Reveal>
     <Reveal><Timeline /></Reveal>
     <Reveal><Acomplishments /></Reveal>
