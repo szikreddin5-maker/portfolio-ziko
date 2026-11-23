@@ -1,9 +1,6 @@
 name: Portfolio verification
 
 on:
-  push:
-    branches:
-      - feature/portfolio-v2-privacy-first
   pull_request:
     paths:
       - 'src/**'
@@ -11,6 +8,10 @@ on:
       - 'package-lock.json'
       - 'next.config.js'
       - '.github/workflows/portfolio-check.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   static-build:
