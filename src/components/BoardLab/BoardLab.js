@@ -9,31 +9,7 @@ import styled, { keyframes } from 'styled-components';
  * along the tangent of the player's angle. The positions are derived
  * rather than manually hard-coded, so the topology is always 4 × 3.
  */
-const PLAYER_COUNT = 4;
-const ZONES_PER_PLAYER = 3;
-const CX = 250;
-const CY = 214;
-const playerColors = ['#67e8f9', '#b2a6ff', '#8fe3c2', '#ffcf99'];
-
-const positions = Array.from({ length: PLAYER_COUNT }, (_, index) => {
-  const angle = -Math.PI / 2 + index * 2 * Math.PI / PLAYER_COUNT;
-  const normal = { x: Math.cos(angle), y: Math.sin(angle) };
-  const tangent = { x: -normal.y, y: normal.x };
-  return {
-    index,
-    color: playerColors[index],
-    avatar: { x: CX + normal.x * 186, y: CY + normal.y * 174 },
-    zones: Array.from({ length: ZONES_PER_PLAYER }, (_, slot) => {
-      const offset = (slot - 1) * 42;
-      return {
-        key: index + '-' + slot,
-        x: CX + normal.x * 123 + tangent.x * offset,
-        y: CY + normal.y * 119 + tangent.y * offset,
-        rotation: (angle * 180 / Math.PI) + 90,
-      };
-    }),
-  };
-});
+const { positions, ZONES_PER_PLAYER, CX, CY } = require('../../lib/boardGeometry');
 
 const glow = keyframes`
   0%, 100% { opacity: .32; }
