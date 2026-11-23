@@ -156,6 +156,7 @@ export const StatusBadge = styled.span`
 `;
 
 export const TagList = styled.ul`
+  list-style: none;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -164,6 +165,7 @@ export const TagList = styled.ul`
 `;
 
 export const Tag = styled.li`
+  list-style: none;
   flex: 0 0 auto;
   color: #b8d4e0;
   font-size: 1.3rem;
