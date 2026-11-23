@@ -1,43 +1,34 @@
 import React from 'react';
-import { AiOutlineTeam, AiOutlineAppstore, AiOutlineThunderbolt } from 'react-icons/ai';
-
+import { AiOutlineTeam, AiOutlineAppstore } from 'react-icons/ai';
 import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalComponents';
 import { VisionGrid, VisionCard, VisionIcon, VisionTitle, VisionText } from './TimeLineStyles';
 
-const visionCards = [
+const experience = [
   {
-    title: 'Topluluk & Liderlik',
+    title: 'University AI Club',
     Icon: AiOutlineTeam,
-    text: "Karabük Üniversitesi Yapay Zeka Kulübü Başkanı olarak 500'den fazla üyenin yer aldığı bir teknoloji ekosistemine liderlik ediyorum. Hackathonlar, teknik atölyeler ve ÜNİDES destekli projeler koordine ederek genç geliştiricilerin sahaya inmesini sağlıyorum.",
+    text: 'President of the Karabük University Artificial Intelligence Club. I support community coordination, technical events and collaboration among students interested in technology.',
   },
   {
-    title: 'Ürün & Sistem Tasarımı',
+    title: 'Collaborative Product Work',
     Icon: AiOutlineAppstore,
-    text: 'Kod yazmayı salt bir görev değil, gerçek hayattaki problemleri çözen ürünler tasarlamak olarak görüyorum. DİSİPLİN uygulamasında topluluk koordinasyonunu, TROMPET projesinde ise insan zihninin karar alma dinamiklerini merkeze alıyorum.',
-  },
-  {
-    title: 'Mühendislik & Problem Çözme',
-    Icon: AiOutlineThunderbolt,
-    text: 'Bilgisayar Mühendisliği formasyonumu C, C#, Kotlin ve modern web teknolojileriyle birleştiriyorum. Performans odaklı, sürdürülebilir ve yaşayan yazılım mimarileri kurmaya odaklanıyorum.',
+    text: 'Working with teammates on TROMPET and DİSİPLİN has helped me connect design decisions, technical implementation and iterative feedback.',
   },
 ];
 
 const Timeline = () => (
-  <Section id="about">
-    <SectionTitle>Mühendislik Refleksi, Topluluk Vizyonu</SectionTitle>
+  <Section id="leadership">
+    <SectionDivider divider />
+    <SectionTitle>Leadership & Collaboration</SectionTitle>
     <VisionGrid>
-      {visionCards.map(({ title, Icon, text }) => (
+      {experience.map(({ title, Icon, text }) => (
         <VisionCard key={title}>
-          <VisionIcon>
-            <Icon size="3.2rem" />
-          </VisionIcon>
+          <VisionIcon><Icon size="3.2rem" aria-hidden="true" /></VisionIcon>
           <VisionTitle>{title}</VisionTitle>
           <VisionText>{text}</VisionText>
         </VisionCard>
       ))}
     </VisionGrid>
-    <SectionDivider />
   </Section>
 );
-
 export default Timeline;
