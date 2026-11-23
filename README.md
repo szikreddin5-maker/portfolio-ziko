@@ -19,7 +19,7 @@ npm ci --legacy-peer-deps
 npm run dev
 ```
 
-The scripts explicitly pass the legacy OpenSSL compatibility flag because this repository still uses Webpack 4 via Next.js 10. **This is an interim compatibility step, not a security upgrade.** A framework migration is still needed.
+The scripts explicitly pass a legacy OpenSSL compatibility flag for the current build setup. **This is an interim compatibility step, not a security upgrade.** A framework migration and fresh dependency audit are still needed.
 
 Production static build:
 
