@@ -1,40 +1,29 @@
 import React from 'react';
-
 import { Section, SectionDivider, SectionText, SectionTitle } from '../../styles/GlobalComponents';
-import {
-  HobbyGrid,
-  HobbyCard,
-  HobbyMedia,
-  HobbyImage,
-  HobbyMask,
-  HobbyBody,
-  HobbyTitle,
-  HobbyDescription,
-} from './TechnologiesStyles';
+import { HobbyGrid, HobbyCard, HobbyMedia, HobbyImage, HobbyMask, HobbyBody, HobbyTitle, HobbyDescription } from './TechnologiesStyles';
 import { hobbies } from '../../constants/constants';
 
 const Technologies = () => (
-  <Section id="hobbies" style={{ overflow: 'visible' }}>
+  <Section id="about">
     <SectionDivider divider />
-    <SectionTitle>Hobiler</SectionTitle>
+    <SectionTitle>Beyond the Code</SectionTitle>
     <SectionText>
-      Disiplin, strateji ve hareket. Bu alanlar mühendislik refleksimi ve liderlik duruşumu besliyor.
+      Outside development, these interests help me stay creative and disciplined.
     </SectionText>
     <HobbyGrid>
-      {hobbies.map((hobby) => (
-        <HobbyCard key={hobby.id}>
+      {hobbies.map(({ id, title, description, image }) => (
+        <HobbyCard key={id}>
           <HobbyMedia>
-            <HobbyImage src={hobby.image} alt={hobby.title} />
+            <HobbyImage src={image} alt="" loading="lazy" />
             <HobbyMask />
           </HobbyMedia>
           <HobbyBody>
-            <HobbyTitle>{hobby.title}</HobbyTitle>
-            <HobbyDescription>{hobby.description}</HobbyDescription>
+            <HobbyTitle>{title}</HobbyTitle>
+            <HobbyDescription>{description}</HobbyDescription>
           </HobbyBody>
         </HobbyCard>
       ))}
     </HobbyGrid>
   </Section>
 );
-
 export default Technologies;

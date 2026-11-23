@@ -1,21 +1,7 @@
 import React from 'react';
-
 import {
-  BlogCard,
-  CardInfo,
-  ExternalLinks,
-  GridContainer,
-  HeaderThree,
-  Hr,
-  Intro,
-  Tag,
-  TagList,
-  TitleContent,
-  UtilityList,
-  Img,
-  ImageFrame,
-  ImageMask,
-  StatusBadge,
+  BlogCard, CardInfo, ExternalLinks, GridContainer, HeaderThree, Hr, Intro,
+  Tag, TagList, TitleContent, UtilityList, Img, ImageFrame, ImageMask, StatusBadge,
 } from './ProjectsStyles';
 import { Section, SectionDivider, SectionTitle } from '../../styles/GlobalComponents';
 import { projects } from '../../constants/constants';
@@ -23,51 +9,42 @@ import { projects } from '../../constants/constants';
 const Projects = () => (
   <Section nopadding id="projects">
     <SectionDivider />
-    <SectionTitle main>Projeler</SectionTitle>
+    <SectionTitle main>Selected Work</SectionTitle>
     <GridContainer>
-      {projects.map((p) => (
-        <BlogCard key={p.id}>
+      {projects.map((project) => (
+        <BlogCard key={project.id}>
           <ImageFrame>
-            <Img src={p.image} alt={p.title} $position={p.imagePosition} />
+            <Img src={project.image} alt={project.title + ' project artwork'} $position={project.imagePosition} loading="lazy" />
             <ImageMask />
           </ImageFrame>
           <TitleContent>
-            <HeaderThree title>{p.title}</HeaderThree>
-            <Intro>{p.intro}</Intro>
+            <HeaderThree title>{project.title}</HeaderThree>
+            <Intro>{project.intro}</Intro>
             <Hr />
           </TitleContent>
-          <CardInfo>{p.description}</CardInfo>
-          <div>
-            <TitleContent>Yığın</TitleContent>
-            <TagList>
-              {p.tags.map((t) => (
-                <Tag key={t}>{t}</Tag>
-              ))}
-            </TagList>
-          </div>
+          <CardInfo>{project.description}</CardInfo>
+          <CardInfo as="p"><strong>My focus:</strong> {project.role}</CardInfo>
+          <TagList aria-label="Technologies and areas">
+            {project.tags.map((tag) => <Tag key={tag}>{tag}</Tag>)}
+          </TagList>
           <UtilityList>
-            {p.actions.map((action) => {
-              if (action.type === 'badge') {
-                return <StatusBadge key={action.label}>{action.label}</StatusBadge>;
-              }
-
-              return (
+            <li><StatusBadge>{project.stage}</StatusBadge></li>
+            {project.actions.map((action) => (
+              <li key={action.label}>
                 <ExternalLinks
-                  key={action.label}
                   href={action.href}
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  target={action.href.startsWith('https://') ? '_blank' : undefined}
+                  rel={action.href.startsWith('https://') ? 'noopener noreferrer' : undefined}
                   primary={action.type === 'primary'}
                 >
                   {action.label}
                 </ExternalLinks>
-              );
-            })}
+              </li>
+            ))}
           </UtilityList>
         </BlogCard>
       ))}
     </GridContainer>
   </Section>
 );
-
 export default Projects;
